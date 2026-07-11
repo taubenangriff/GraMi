@@ -75,6 +75,9 @@ public class CommandLineParser {
 			//limited time
 			if(key.compareTo("limitedtime")==0)
 				Settings.LimitedTime = (value.compareTo("true")==0);
+
+			if(key.compareTo("maxNodes")==0)
+				Settings.maxNodes = Integer.parseInt(value);
 		}
 	}
 }

@@ -49,4 +49,6 @@ public class Settings
 	
 	//the maximum number of the same label appears in the resulted pattern
 	public static int numLabelAppears = -1;	
+
+	public static int maxNodes = -1;
 }

@@ -293,11 +293,12 @@ public class DFSCode<NodeType, EdgeType> extends
 //			}
 			//PRUNER
 			//******* 2
-//			if(me.getNodeCount()>=6)
-//			{
-//				finalFrequency=new IntFrequency(0);
-//				return finalFrequency;
-//			}
+			if(Settings.maxNodes > -1 && me.getNodeCount()>= Settings.maxNodes)
+			{
+				finalFrequency=new IntFrequency(0);
+				store(false);
+				return finalFrequency;
+			}
 			
 			//PRUNER
 			//******* 3
