@@ -6,6 +6,7 @@ distance=1
 alpha=1
 beta=0
 maximumNodes=-1
+maxRam=16g
 
 #parse the parameters
 while test $# -gt 0; do
@@ -23,6 +24,7 @@ while test $# -gt 0; do
                         echo "-approxA,			approximation parameter Alpha"
                         echo "-approxB,			approximation parameter Beta"
 						echo "-m,			maximum vertex count for subgraphs to be considered"
+						echo "-ram,			maximum RAM for the grami jvm"
                         echo " "
                         exit 0
                         ;;
@@ -92,6 +94,13 @@ while test $# -gt 0; do
 			fi
 			shift
 			;;
+		-ram)
+			shift
+			if test $# -gt 0; then
+								maxRam=$1
+			fi
+			shift
+			;;
         esac
 done
 
@@ -145,5 +154,5 @@ fi
 #Running Grami
 echo "Starting GraMi ...";
 echo ./$prog/bin Dijkstra.main freq=$frequency filename=$file datasetFolder=./Datasets/ distance=$distance type=$type mlabels=false maxLabelAppearance=$labels approximate=$alpha approxConst=$beta maxNodes=$maximumNodes
-java -Xmx32g -cp ./$prog/bin Dijkstra.main freq=$frequency filename=$file datasetFolder=./Datasets/ distance=$distance type=$type mlabels=false maxLabelAppearance=$labels approximate=$alpha approxConst=$beta maxNodes=$maximumNodes
+java -Xmx$maxRam -cp ./$prog/bin Dijkstra.main freq=$frequency filename=$file datasetFolder=./Datasets/ distance=$distance type=$type mlabels=false maxLabelAppearance=$labels approximate=$alpha approxConst=$beta maxNodes=$maximumNodes
 echo "GraMi Finished."
