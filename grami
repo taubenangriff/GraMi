@@ -84,9 +84,6 @@ while test $# -gt 0; do
 			fi
 			shift
 			;;
-                *)
-                        break
-                        ;;
 		-m)
 			shift
 			if test $# -gt 0; then
@@ -101,6 +98,11 @@ while test $# -gt 0; do
 			fi
 			shift
 			;;
+		        *)
+		                echo "Unknown option: $1"
+		                echo "Use -h or --help for usage."
+		                exit 1
+		                ;;
         esac
 done
 
